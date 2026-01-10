@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kawaii School Timer - Study Time!</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Fredoka+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container timer-container">
+        <header class="timer-header">
+            <div class="user-info">
+                <div class="user-avatar">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <div class="user-details">
+                    <h2>Hello, <span id="usernameDisplay">Student</span>!</h2>
+                    <p>Ready for a productive study session? <span class="cute-emoji-small">🌸✨</span></p>
+                </div>
+            </div>
+            <div class="header-controls">
+                <button class="btn-icon" id="profileBtn" title="Profile">
+                    <i class="fas fa-user-cog"></i>
+                </button>
+                <button class="btn-icon" id="settingsBtn" title="Settings">
+                    <i class="fas fa-cog"></i>
+                </button>
+                <button class="btn-icon" id="logoutBtn" title="Logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </header>
+        
+        <main class="timer-main">
+            <div class="timer-card">
+                <div class="timer-display">
+                    <div class="time-circle">
+                        <div class="time-text">
+                            <span id="minutes">25</span>:<span id="seconds">00</span>
+                        </div>
+                        <div class="time-label">STUDY TIME</div>
+                        <svg class="progress-ring" width="300" height="300">
+                            <circle class="progress-ring-circle" stroke-width="12" fill="transparent" r="138" cx="150" cy="150"/>
+                        </svg>
+                    </div>
+                    
+                    <div class="timer-controls">
+                        <button class="btn-control" id="startBtn">
+                            <i class="fas fa-play"></i> Start
+                        </button>
+                        <button class="btn-control" id="pauseBtn" disabled>
+                            <i class="fas fa-pause"></i> Pause
+                        </button>
+                        <button class="btn-control" id="resetBtn">
+                            <i class="fas fa-redo"></i> Reset
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="timer-presets">
+                    <h3><i class="fas fa-hourglass-half"></i> Quick Presets</h3>
+                    <div class="preset-buttons">
+                        <button class="preset-btn" data-minutes="25">25 min Study</button>
+                        <button class="preset-btn" data-minutes="5">5 min Break</button>
+                        <button class="preset-btn" data-minutes="15">15 min Review</button>
+                        <button class="preset-btn" data-minutes="45">45 min Session</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="side-panel">
+                <div class="panel-card">
+                    <h3><i class="fas fa-tasks"></i> Today's Tasks</h3>
+                    <div class="tasks-list">
+                        <div class="task-item">
+                            <input type="checkbox" id="task1">
+                            <label for="task1">Math homework</label>
+                        </div>
+                        <div class="task-item">
+                            <input type="checkbox" id="task2">
+                            <label for="task2">English essay</label>
+                        </div>
+                        <div class="task-item">
+                            <input type="checkbox" id="task3">
+                            <label for="task3">Science project</label>
+                        </div>
+                        <div class="task-item">
+                            <input type="checkbox" id="task4">
+                            <label for="task4">History reading</label>
+                        </div>
+                    </div>
+                    <div class="add-task">
+                        <input type="text" placeholder="Add new task...">
+                        <button class="btn-small"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+                
+                <div class="panel-card">
+                    <h3><i class="fas fa-chart-line"></i> Study Stats</h3>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-value" id="todayTime">0 min</div>
+                            <div class="stat-label">Today</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="weekTime">0 min</div>
+                            <div class="stat-label">This Week</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="sessionsCount">0</div>
+                            <div class="stat-label">Sessions</div>
+                        </div>
+                    </div>
+                    <div class="motivation-message">
+                        <i class="fas fa-star"></i> You're doing great! Keep it up!
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <div class="timer-footer">
+            <div class="sound-controls">
+                <button class="btn-icon" id="soundToggle">
+                    <i class="fas fa-volume-up"></i> Sound On
+                </button>
+                <button class="btn-icon" id="alarmBtn">
+                    <i class="fas fa-bell"></i> Set Alarm
+                </button>
+            </div>
+            <div class="footer-emoji-large">⏰📚🌸✏️🎀🍥📖✨</div>
+            <div class="timer-mode">
+                <span class="mode-label">Mode:</span>
+                <div class="mode-switch">
+                    <button class="mode-btn active" data-mode="study">Study</button>
+                    <button class="mode-btn" data-mode="break">Break</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Settings Modal -->
+        <div class="modal" id="settingsModal">
+            <div class="modal-content">
+                <h3><i class="fas fa-cog"></i> Timer Settings</h3>
+                <div class="settings-group">
+                    <label for="studyTime">Study Duration (minutes)</label>
+                    <input type="range" id="studyTime" min="5" max="60" value="25">
+                    <span id="studyTimeValue">25</span>
+                </div>
+                <div class="settings-group">
+                    <label for="breakTime">Break Duration (minutes)</label>
+                    <input type="range" id="breakTime" min="1" max="15" value="5">
+                    <span id="breakTimeValue">5</span>
+                </div>
+                <div class="settings-group">
+                    <label for="alarmSound">Alarm Sound</label>
+                    <select id="alarmSound">
+                        <option value="bell">Bell</option>
+                        <option value="chime">Chime</option>
+                        <option value="melody">Melody</option>
+                    </select>
+                </div>
+                <button class="btn" id="saveSettings">Save Settings</button>
+                <button class="btn btn-secondary" id="closeSettings">Close</button>
+            </div>
+        </div>
+        
+        <!-- Profile Modal -->
+        <div class="modal" id="profileModal">
+            <div class="modal-content">
+                <h3><i class="fas fa-user-cog"></i> Customize Your Profile</h3>
+                
+                <div class="profile-preview">
+                    <div class="user-avatar-large" id="avatarPreview">
+                        <i class="fas fa-user-graduate" id="avatarIcon"></i>
+                    </div>
+                    <div class="profile-info">
+                        <h4 id="previewUsername">Student</h4>
+                        <p id="previewStatus">Ready to study! ✨</p>
+                    </div>
+                </div>
+                
+                <div class="settings-group">
+                    <label for="profileUsername"><i class="fas fa-user"></i> Username</label>
+                    <input type="text" id="profileUsername" placeholder="Enter your username">
+                </div>
+                
+                <div class="settings-group">
+                    <label for="userStatus"><i class="fas fa-comment"></i> Status Message</label>
+                    <input type="text" id="userStatus" placeholder="How are you feeling today?">
+                </div>
+                
+                <div class="settings-group">
+                    <label><i class="fas fa-palette"></i> Avatar Icon</label>
+                    <div class="avatar-options">
+                        <button class="avatar-option active" data-icon="fa-user-graduate">
+                            <i class="fas fa-user-graduate"></i>
+                        </button>
+                        <button class="avatar-option" data-icon="fa-cat">
+                            <i class="fas fa-cat"></i>
+                        </button>
+                        <button class="avatar-option" data-icon="fa-heart">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                        <button class="avatar-option" data-icon="fa-star">
+                            <i class="fas fa-star"></i>
+                        </button>
+                        <button class="avatar-option" data-icon="fa-moon">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                        <button class="avatar-option" data-icon="fa-sun">
+                            <i class="fas fa-sun"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="settings-group">
+                    <label><i class="fas fa-fill-drip"></i> Theme Color</label>
+                    <div class="color-options">
+                        <button class="color-option active" data-color="#ff85a2" style="background: #ff85a2;"></button>
+                        <button class="color-option" data-color="#85d7ff" style="background: #85d7ff;"></button>
+                        <button class="color-option" data-color="#ffcc66" style="background: #ffcc66;"></button>
+                        <button class="color-option" data-color="#9d7b9f" style="background: #9d7b9f;"></button>
+                        <button class="color-option" data-color="#99ff99" style="background: #99ff99;"></button>
+                        <button class="color-option" data-color="#ff9999" style="background: #ff9999;"></button>
+                    </div>
+                </div>
+                
+                <div class="modal-buttons">
+                    <button class="btn" id="saveProfile">
+                        <i class="fas fa-save"></i> Save Profile
+                    </button>
+                    <button class="btn btn-secondary" id="closeProfile">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio for alarm -->
+    <audio id="alarmSound" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-alarm-digital-clock-beep-989.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="timer.js"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kawaii School Timer - Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Fredoka+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container login-container">
+        <div class="header">
+            <div class="logo">
+                <i class="fas fa-clock"></i>
+                <h1>Kawaii School Timer</h1>
+            </div>
+            <p class="subtitle">Study with cute pastel vibes! ✨</p>
+        </div>
+        
+        <div class="login-card">
+            <div class="decoration">
+                <div class="cute-emoji">📚✨🌸</div>
+                <div class="cute-shapes">
+                    <div class="shape shape-heart"></div>
+                    <div class="shape shape-star"></div>
+                    <div class="shape shape-cloud"></div>
+                </div>
+            </div>
+            
+            <h2><i class="fas fa-user-graduate"></i> Welcome Back!</h2>
+            <p class="login-instruction">Enter your username and password to access your timer</p>
+            
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="username"><i class="fas fa-user"></i> Username</label>
+                    <input type="text" id="username" placeholder="Enter your username" required>
+                    <div class="input-decoration">
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="password"><i class="fas fa-lock"></i> Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                    <div class="input-decoration">
+                        <i class="fas fa-key"></i>
+                    </div>
+                </div>
+                
+                <div class="form-footer">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember">
+                        <label for="remember">Remember me</label>
+                    </div>
+                    <a href="#" class="forgot-link">Forgot password?</a>
+                </div>
+                
+                <button type="submit" class="btn login-btn">
+                    <i class="fas fa-sign-in-alt"></i> Login to Timer
+                </button>
+                
+                <div class="demo-info">
+                    <p><i class="fas fa-info-circle"></i> Demo credentials: username: <strong>student</strong> / password: <strong>study123</strong></p>
+                </div>
+            </form>
+            
+            <div class="login-footer">
+                <p>New here? <a href="#" class="signup-link">Create an account</a></p>
+                <div class="cute-message">
+                    <i class="fas fa-heart"></i> Stay focused and productive!
+                </div>
+            </div>
+        </div>
+        
+        <div class="cute-footer">
+            <p>Made with <i class="fas fa-heart"></i> for cute and productive study sessions</p>
+            <div class="footer-emoji">🌸📚⏰✨🍥🎀</div>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>
